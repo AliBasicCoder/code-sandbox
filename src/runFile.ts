@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
-import { createInActual, createInCache, parsePath, createAddCopy } from "./pathManger";
+import * as langs from "./code_runners/exporter";
+import { createInActual, createInCache, parsePath } from "./pathManger";
 import { parse, join } from "path";
 
 export function runFile(file: string) {
@@ -13,7 +14,8 @@ export function runFile(file: string) {
       join(workspaceFolders[0].uri.fsPath, `${fileName}.${lang}`) :
       filePath;
 
-  createAddCopy(
+  // @ts-ignore    
+  const command = langs[lang](
     createInActual(fileName, lang),
     filePath,
     dir,
@@ -24,5 +26,5 @@ export function runFile(file: string) {
 
   terminal.show();
 
-  terminal.sendText(`node ${filePath}`, true);
+  terminal.sendText(command, true);
 }

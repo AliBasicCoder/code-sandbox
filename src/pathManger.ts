@@ -2,23 +2,9 @@ import { join, parse } from "path";
 import { mkdirSync, existsSync, writeFileSync, appendFileSync, readFileSync } from "fs";
 import { langSupported } from "./globalVars";
 import { homedir as getHomeDir } from "os";
-import { makeTemplate } from "./makeTemplate";
-import { resolveReq } from "./resolveReq";
 
 const extName = "sandbox-vscode-extension";
 const homedir = getHomeDir();
-
-export const createAddCopy = (from: string, to: string, dir: string, file: string) => {
-  writeFileSync(
-    to,
-    makeTemplate(
-      readFileSync(from, "utf8"),
-      dir,
-      file,
-      resolveReq(dir)
-    )
-  );
-};
 
 export const createIfNotExits = (path: string, dir: boolean, defaultContent?: string | Buffer) => {
   if (!existsSync(path)) {
