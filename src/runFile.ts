@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
-import { createInActual, createInCache, parsePath, createAddCopyBefore } from "./pathManger";
+import { createInActual, createInCache, parsePath, createAddCopy } from "./pathManger";
 import { parse, join } from "path";
-import { makeRequire } from "./makeRequire";
 
 export function runFile(file: string) {
   vscode.window.showInformationMessage("starting file...");
@@ -14,10 +13,11 @@ export function runFile(file: string) {
       join(workspaceFolders[0].uri.fsPath, `${fileName}.${lang}`) :
       filePath;
 
-  createAddCopyBefore(
+  createAddCopy(
     createInActual(fileName, lang),
     filePath,
-    `console.clear();__dirname="${dir}";__filename="${needFilePath}";${makeRequire(dir)}\n`
+    dir,
+    needFilePath
   );
 
   const terminal = vscode.window.createTerminal("Runner");
