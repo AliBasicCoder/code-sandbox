@@ -1,14 +1,6 @@
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
-
-interface pkgJson {
-  devDependencies: obj<string>;
-  dependencies: obj<string>;
-}
-
-type obj<T> = {
-  [key: string]: T;
-};
+import { obj, pkgJson } from "../../types";
 
 export function resolveReq(dir: string): string {
   if (!existsSync(join(dir, "package.json")))
