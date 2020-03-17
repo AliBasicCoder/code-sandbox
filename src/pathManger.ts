@@ -18,7 +18,11 @@ export const createIfNotExits = (path: string, dir: boolean, defaultContent?: st
 export const makeDefault = () => {
   createIfNotExits(join(homedir, extName), true);
 
-  createIfNotExits(join(homedir, extName, "data.json"), false, "{}");
+  createIfNotExits(
+    join(homedir, extName, "data.json"),
+    false,
+    JSON.stringify(langSupported.map(ln => ({ [ln]: [] })))
+  );
 
   ["actual", "cache"].forEach(
     dir => {

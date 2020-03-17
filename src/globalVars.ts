@@ -1,2 +1,2 @@
 
-export const langSupported = ["js", "ts", "py"];
+export const langSupported = ["js"];
