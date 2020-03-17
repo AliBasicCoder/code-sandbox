@@ -9,6 +9,11 @@
 	"categories": [
 		"Other"
 	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AliBasicCoder/code-sandbox.git"
+	},
+	"publisher": "AliBasicCoder",
 	"activationEvents": [
 		"onCommand:code-sandbox.sandbox",
 		"onCommand:code-sandbox.runfile"
