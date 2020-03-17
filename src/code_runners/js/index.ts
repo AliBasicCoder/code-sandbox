@@ -2,15 +2,20 @@ import { writeFileSync, readFileSync } from "fs";
 import { makeTemplate } from "./makeTemplate";
 import { resolveReq } from "./resolveReq";
 
-export const jsFileRunner = (from: string, to: string, dir: string, file: string) => {
+export const jsFileRunner = (
+  filePathInActual: string,
+  filePathInCache: string,
+  dirWhereSandboxRunIn: string,
+  fileWhereLikeItWas: string
+) => {
   writeFileSync(
-    to,
+    filePathInCache,
     makeTemplate(
-      readFileSync(from, "utf8"),
-      dir,
-      file,
-      resolveReq(dir)
+      readFileSync(filePathInActual, "utf8"),
+      dirWhereSandboxRunIn,
+      fileWhereLikeItWas,
+      resolveReq(dirWhereSandboxRunIn)
     )
   );
-  return `node ${to}`;
+  return `node ${filePathInCache}`;
 };
