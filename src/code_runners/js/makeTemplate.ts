@@ -1,5 +1,5 @@
 
-export function makeTemplate(code: string, dirname: string, filename: string, reqObj: string) {
+export function makeTemplate(code: string, dirname: string, filename: string) {
   return `
   (function (__dirname, __filename, require) {
     ${code}
@@ -10,9 +10,13 @@ export function makeTemplate(code: string, dirname: string, filename: string, re
     function (arg) {
       var dirname = "${dirname}";
       var oRequire = require;
-      var join = oRequire("path").join;
-      var obj = ${reqObj};
-      return oRequire(join(dirname, "node_modules", arg, obj[arg]));
+      var path = oRequire("path");
+      if (path.isAbsolute(arg)) {
+        return oRequire(arg);
+      } else if (arg.startsWith(".")) {
+        return oRequire(path.join(dirname, arg));
+      }
+      return oRequire(path.join(dirname, "node_modules", arg));
     }
   )`;
 }
