@@ -29,7 +29,7 @@ export const makeDefault = () => {
   createIfNotExits(
     join(homedir, extName, "data.json"),
     false,
-    JSON.stringify(langSupported.map(ln => ({ [ln]: [] })))
+    JSON.stringify(langSupported.map(ln => ({ [ln]: [] }))[0])
   );
 
   ["actual", "cache"].forEach(
