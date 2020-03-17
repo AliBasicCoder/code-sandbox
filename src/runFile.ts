@@ -14,7 +14,7 @@ export function runFile(file: string) {
       join(workspaceFolders[0].uri.fsPath, `${fileName}.${lang}`) :
       filePath;
 
-  // @ts-ignore    
+  // @ts-ignore 
   const command = langs[lang](
     createInActual(fileName, lang),
     filePath,
