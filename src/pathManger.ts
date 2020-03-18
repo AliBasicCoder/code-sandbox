@@ -46,7 +46,6 @@ export const makeDefault = () => {
 export const parsePath = (file: string) => {
   const arr = file.split(process.platform === "win32" ? "\\" : "/");
   const index = arr.indexOf(extName);
-  console.log(index);
   if (index === -1)
     throw new Error("file is not sandbox");
   return {
