@@ -23,11 +23,11 @@
 		"commands": [
 			{
 				"command": "code-sandbox.sandbox",
-				"title": "Sandbox - new sandbox tap"
+				"title": "Sandbox - create new Sandbox"
 			},
 			{
 				"command": "code-sandbox.runfile",
-				"title": "Sandbox - run sandbox"
+				"title": "Sandbox - run Sandbox"
 			}
 		]
 	},
