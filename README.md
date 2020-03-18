@@ -9,6 +9,6 @@ an extension for running a sandbox
 
 ![gif](https://raw.githubusercontent.com/AliBasicCoder/code-sandbox/master/tut.gif)
 
-## Known Issues
+## licence
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+copyrights (c) AliBasicCoder 2020
